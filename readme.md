@@ -11,6 +11,8 @@ Upload Box is a html5 file uploader. The main feature is:
 
 ## Demo
 
+The demo is under *build/demo.html*, open and see more info.
+
 ![demo.gif](demo.gif)
 
 ## How to use ?
