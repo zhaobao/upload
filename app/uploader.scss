@@ -1,0 +1,224 @@
+@charset "UTF-8";
+
+body {
+    background-color: #F4946E;
+    width: 48em;
+    margin: 100px auto;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.upload-container {
+    box-shadow: 0 0 20px rgba(#000000, .3);
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+::-webkit-scrollbar-thumb {
+    background: #8378d4;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -o-border-radius: 0;
+    -ms-border-radius: 0;
+    border-radius: 0;
+}
+::-webkit-scrollbar-track {
+    background: rgba(211, 211, 211, 0.18);
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -o-border-radius: 0;
+    -ms-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -o-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -ms-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    /* box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+}
+
+@-webkit-keyframes progress-bar-stripes {
+    from {
+        background-position: 80px 0;
+    }
+    to {
+        background-position: 0 0;
+    }
+}
+
+.upload {
+    background-color: #FFFFFF;
+    width: 100%;
+    overflow: hidden;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: lighter;
+    .hide {
+        display: none;
+    }
+}
+
+// 头部
+.upload__header {
+    height: 60px;
+    background-color: #F3F4F8;
+    color: #84898D;
+    display: flex;
+    flex-direction: row;
+    // 标题
+    .upload__title {
+        flex: 1;
+        font-size: 18px;
+        line-height: 30px;
+        padding: 15px;
+    }
+    // 关闭按钮
+    .upload__close {
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        cursor: pointer;
+        &:hover {
+            background-color: #d9dfe3;
+        }
+    }
+}
+
+// 上传条目
+.upload__body {
+    background-color: #FAFAFA;
+    max-height: 400px;
+    overflow-y: auto;
+    .upload-item {
+        height: 80px;
+        border-bottom: 1px solid #e9e9e9;
+        display: flex;
+        flex-direction: row;
+        margin: 0 15px;
+    }
+    // 图标
+    .upload-item__icon {
+        margin: 12px 12px;
+        width: 56px;
+        height: 56px;
+        background-color: #8378D4;
+        border-radius: 6px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .upload-item__body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin: 16px 12px 20px 12px;
+        color: #ABACB0;
+    }
+    .upload-item__info {
+        flex: 1;
+        display: flex;
+    }
+    // 名字
+    .upload-item__name {
+        padding-top: 3px;
+        flex: 1;
+        color: #7D848A;
+    }
+    // 状态
+    .upload-item__status {
+        padding-top: 3px;
+    }
+    .upload-item__status-success {
+        color: #39cb62;
+    }
+    .upload-item__status-error {
+        color: #cb5532;
+    }
+    // 结果
+    .upload-item__result {
+        width: 20px;
+        margin-left: 12px;
+        cursor: pointer;
+        color: #cb5532;
+        &:hover {
+            transform: scale(0.9);
+            font-weight: bold;
+        }
+    }
+    // 进度条
+    .upload-item__pg {
+        height: 4px;
+        position: relative;
+    }
+    .upload-item-pg-bg {
+        background-color: #DBDEE7;
+        width: 100%;
+        height: 100%;
+    }
+    .upload-item-pg-hl {
+        position: absolute;
+        background-color: #39cb62;
+        width: 0;
+        height: 100%;
+        top: 0;
+        transition: all 400ms ease;
+        &.unknown {
+            background: repeating-linear-gradient(135deg, #39cb62, #39cb62 4px,transparent 4px,transparent 8px);
+            animation: progress-bar-stripes 2s linear infinite;
+        }
+    }
+    .upload-item:first-child {
+        margin-top: 15px;
+    }
+    .upload-item:last-child {
+        border-bottom: none;
+        margin-bottom: 15px;
+    }
+}
+
+// 底部
+.upload__footer {
+    box-shadow: 0 -1px 8px 0 #E0E0E0;
+    height: 100px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    // 拖拽区域
+    .upload__drag {
+        flex: 1;
+        padding: 15px;
+    }
+    .upload__area {
+        cursor: pointer;
+        text-align: center;
+        height: 100%;
+        border: 2px dotted #D9D9D9;
+        line-height: 70px;
+        color: #9296A1;
+        .upload-area__browse {
+            color: #8378D4;
+        }
+        &:hover {
+            border-color: #8378D4;
+        }
+    }
+    // 上传按钮
+    .upload__do {
+        width: 100px;
+        background: linear-gradient(135deg, #708BCE, #8378D4);
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+        color: #FFFFFF;
+        font-size: 32px;
+        cursor: pointer;
+        &.disable {
+            color: rgba(#FFFFFF, .6);
+            cursor: not-allowed;
+        }
+    }
+}
