@@ -20,14 +20,14 @@ new Uploader('.upload-container', { 'url': 'http://127.0.0.1:9999' }).do();
 ```
 
 ## How to build ?
-```
+```javascript
 npm install
 npm run build && npm run dev
 visit: http://127.0.0.1:8080/demo.html
 ```
 
 ## How to deploy
-```
+```javascript
 npm run release
 ```
 
