@@ -14,7 +14,7 @@ Upload Box is a html5 file uploader. The main feature is:
 ![demo.gif](demo.gif)
 
 ## How to use ?
-```
+```javascript
 const Uploader = require('./uploader');
 new Uploader('.upload-container', { 'url': 'http://127.0.0.1:9999' }).do();
 ```
