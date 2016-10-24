@@ -60,7 +60,7 @@ class Template {
             <div class="upload">
                 <div class="upload__header">
                     <div class="upload__title">FILE UPLOAD</div>
-                    <div class="upload__close">╳</div>
+                    <div class="upload__close"><div class="upload-close"></div></div>
                 </div>
                 <div class="upload__body"></div>
                 <div class="upload__footer">
@@ -70,7 +70,7 @@ class Template {
                             <span class="upload-area__browse">Click to browse</span>
                         </div>
                     </div>
-                    <div class="upload__do disable">☂</div>
+                    <div class="upload__do disable"><div class="upload-icon"></div></div>
                 </div>
                 <div class="upload__form hide"></div>
             </div>`
@@ -87,7 +87,9 @@ class Template {
                 <div class="upload-item__info">
                     <div class="upload-item__name">${name}</div>
                     <div class="upload-item__status">${size}</div>
-                    <div class="upload-item__result" data-target="${id}">╳</div>
+                    <div class="upload-item__result" data-target="${id}">
+                        <div class="upload-close"></div>
+                    </div>
                 </div>
                 <div class="upload-item__pg">
                     <div class="upload-item-pg-bg"></div>
@@ -124,6 +126,7 @@ class Uploader {
     __cacheSelector() {
         this.$body = this.$upload.querySelector('.upload__body');
         this.$close = this.$upload.querySelector('.upload__close');
+        this.$closeIcon = this.$upload.querySelector('.upload-close');
         this.$drag = this.$upload.querySelector('.upload__drag');
         this.$do = this.$upload.querySelector('.upload__do');
         this.$input = this.$upload.querySelector('.upload__input');
@@ -132,7 +135,9 @@ class Uploader {
     __bindEvent() {
         this.$close.addEventListener('click', function() {
             this.$container.parentNode.removeChild(this.$container);
-
+        }.bind(this), false);
+        this.$closeIcon.addEventListener('click', function() {
+            this.$container.parentNode.removeChild(this.$container);
         }.bind(this), false);
         this.$drag.addEventListener('click', function() {
             this.$input.click();
@@ -149,8 +154,15 @@ class Uploader {
         this.$body.addEventListener('click', function(e) {
             console.log(this.__files);
             console.log(e.target);
+            let $target = null;
+            if (e.target.classList.contains('upload-close')) {
+                $target = e.target.parentNode;
+            }
             if (e.target.classList.contains('upload-item__result')) {
-                let index = e.target.getAttribute('data-target');
+                $target = e.target;
+            }
+            if ($target !== null) {
+                let index = $target.getAttribute('data-target');
                 if (this.__files.hasOwnProperty('item-' + index)) delete this.__files['item-' + index];
                 if (Util.isEmptyObject(this.__files)) this.__toggleUploadBtn(false);
                 this.$body.removeChild(document.querySelector('.upload-item-' + index));

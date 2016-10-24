@@ -3,6 +3,7 @@
 Upload Box is a html5 file uploader. The main feature is:
 
 - Beautiful UI (^_^)
+- No fonts, no image icon, all pure css
 - Support progress update
 - Support file type filter
 - Tiny and pure Javascript, no other dependency

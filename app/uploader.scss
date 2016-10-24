@@ -60,6 +60,36 @@ body {
     }
 }
 
+.upload-close {
+    color: #000;
+    position: absolute;
+    margin-top: 0;
+    margin-left: -11px;
+    width: 21px;
+    height: 21px;
+}
+.upload-close:before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    width: 21px;
+    height: 1px;
+    background-color: currentColor;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+.upload-close:after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    width: 21px;
+    height: 1px;
+    background-color: currentColor;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+
+}
+
 // 头部
 .upload__header {
     height: 60px;
@@ -81,6 +111,9 @@ body {
         line-height: 60px;
         text-align: center;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         &:hover {
             background-color: #d9dfe3;
         }
@@ -143,7 +176,9 @@ body {
         width: 20px;
         margin-left: 12px;
         cursor: pointer;
-        color: #cb5532;
+        .upload-close {
+            color: #cb5532;
+        }
         &:hover {
             transform: scale(0.9);
             font-weight: bold;
@@ -216,9 +251,48 @@ body {
         color: #FFFFFF;
         font-size: 32px;
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .upload-icon:after {
+            content: '';
+            position: absolute;
+            top: -11px;
+            left: 8px;
+            width: 8px;
+            height: 8px;
+            border-top: solid 1px currentColor;
+            border-right: solid 1px currentColor;
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+
+        .upload-icon:before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 12px;
+            width: 1px;
+            height: 15px;
+            background-color: currentColor;
+        }
+
+        .upload-icon {
+            color: #FFFFFF;
+            position: absolute;
+            margin-top: 8px;
+            width: 26px;
+            height: 10px;
+            border: solid 1px currentColor;
+            border-top: none;
+            border-radius: 1px;
+        }
         &.disable {
             color: rgba(#FFFFFF, .6);
             cursor: not-allowed;
+            .upload-icon {
+                color: rgba(#FFFFFF, .6);
+            }
         }
     }
 }
