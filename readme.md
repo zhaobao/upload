@@ -34,10 +34,10 @@ visit: http://127.0.0.1:8080/demo.html
 npm run release
 ```
 
-## Licence
-
-MIT
-
 ## Thanks
 
 Thanks to [Athul Athreya](https://dribbble.com/shots/2440429-Day-08-File-Upload-UI/attachments/474676)
+
+## Licence
+
+![MIT](https://img.shields.io/npm/l/vue.svg)
